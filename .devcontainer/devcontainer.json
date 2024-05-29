@@ -9,7 +9,7 @@
       // Append -bullseye or -buster to pin to an OS version.
       // Use the -bullseye variants on local arm64/Apple Silicon.
       // "VARIANT": "17-bullseye",
-      "VARIANT": "17-buster",
+      "VARIANT": "17",
       // Options
       // maven and gradle wrappers are used by default, we don't need them installed globally
       // "INSTALL_MAVEN": "true",
