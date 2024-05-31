@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import PlayerPage from 'app/modules/entity/player';
 
 import ErrorBoundaryRoutes from 'app/shared/error/error-boundary-routes';
 
@@ -11,6 +12,7 @@ export default () => {
       <ErrorBoundaryRoutes>
         {/* prettier-ignore */}
         {/* jhipster-needle-add-route-path - JHipster will add routes here */}
+        <Route path="player" element={<PlayerPage />} />
       </ErrorBoundaryRoutes>
     </div>
   );

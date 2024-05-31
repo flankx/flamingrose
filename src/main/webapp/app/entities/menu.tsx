@@ -8,6 +8,9 @@ const EntitiesMenu = () => {
     <>
       {/* prettier-ignore */}
       {/* jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here */}
+      <MenuItem icon="video" to="/entity/player">
+        <Translate contentKey="global.menu.entities.player">H5 Player</Translate>
+      </MenuItem>
     </>
   );
 };

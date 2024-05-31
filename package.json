@@ -98,6 +98,7 @@
     "sockjs-client": "1.6.1",
     "tslib": "2.6.2",
     "uuid": "9.0.1",
+    "video-react": "^0.16.0",
     "webstomp-client": "1.2.6"
   },
   "devDependencies": {
