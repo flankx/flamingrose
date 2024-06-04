@@ -33,6 +33,8 @@ import {
   faUsersCog,
   faWrench,
   faVideo,
+  faPlay,
+  faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -73,5 +75,7 @@ export const loadIcons = () => {
     faUsersCog,
     faWrench,
     faVideo,
+    faPlay,
+    faXmark,
   );
 };
