@@ -43,8 +43,7 @@ public class VideoResource {
 
     private final VideoRepository videoRepository;
 
-    public VideoResource(String applicationName, VideoService videoService, VideoRepository videoRepository) {
-        this.applicationName = applicationName;
+    public VideoResource(VideoService videoService, VideoRepository videoRepository) {
         this.videoService = videoService;
         this.videoRepository = videoRepository;
     }

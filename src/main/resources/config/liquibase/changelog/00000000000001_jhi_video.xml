@@ -21,12 +21,12 @@
             <column name="created_by" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="created_date" type="timestamp"/>
+            <column name="created_date" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP"/>
             <column name="reset_date" type="timestamp">
                 <constraints nullable="true"/>
             </column>
             <column name="last_modified_by" type="varchar(50)"/>
-            <column name="last_modified_date" type="timestamp"/>
+            <column name="last_modified_date" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP"/>
         </createTable>
 
         <createIndex indexName="name_IDX" tableName="jhi_video">
@@ -37,7 +37,6 @@
             <column name="code"/>
         </createIndex>
 
-        <dropDefaultValue tableName="jhi_video" columnName="created_date" columnDataType="${datetimeType}"/>
     </changeSet>
 
     <changeSet author="FlankX" id="1::jhi_video::dataForTable" labels="data">

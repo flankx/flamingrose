@@ -134,6 +134,7 @@ spring:
     basename: i18n/messages
   main:
     allow-bean-definition-overriding: true
+    banner-mode: off
   mvc:
     problemdetails:
       enabled: true

@@ -1,3 +1,3 @@
-id;v_name;v_code;v_pic;v_url;v_desc;last_modified_by
-1;Video_1;CODE_1;AAA;AAA;My First Video;system
-2;Video_2;CODE_2;BBB;BBB;My Second Video;system
+id;name;code;pic;url;desc;created_by;last_modified_by
+1;React Full Course for free;U5kzYhB7DJrjs4EU;NULL;https://youtu.be/CgkZ7MvWUAA?si=U5kzYhB7DJrjs4EU;React Course;admin;admin
+2;Video-React Example;trailer_hd;NULL;https://media.w3.org/2010/05/sintel/trailer_hd.mp4;Example Video;admin;admin
