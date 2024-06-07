@@ -1,0 +1,28 @@
+{
+  "videoManagement": {
+    "home": {
+      "title": "Media",
+      "refreshListLabel": "Refresh list",
+      "createLabel": "Create a new meida",
+      "createOrEditLabel": "Create or edit a meida"
+    },
+    "created": "A new meida is created with identifier {{ param }}",
+    "updated": "A meida is updated with identifier {{ param }}",
+    "deleted": "A meida is deleted with identifier {{ param }}",
+    "delete": {
+      "question": "Are you sure you want to delete meida {{ id }}?"
+    },
+    "detail": {
+      "title": "Media"
+    },
+    "name": "Name",
+    "code": "Code",
+    "pic": "Picture",
+    "url": "Url",
+    "desc": "Description",
+    "createdBy": "Created by",
+    "createdDate": "Created date",
+    "lastModifiedBy": "Modified by",
+    "lastModifiedDate": "Modified date"
+  }
+}

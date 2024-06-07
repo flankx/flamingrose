@@ -52,7 +52,7 @@ export const VideoManagementUpdate = () => {
       <Row className="justify-content-center">
         <Col md="8">
           <h1>
-            <Translate contentKey="userManagement.home.createOrEditLabel">Create or edit a Video</Translate>
+            <Translate contentKey="videoManagement.home.createOrEditLabel">Create or edit a Video</Translate>
           </h1>
         </Col>
       </Row>
@@ -75,7 +75,7 @@ export const VideoManagementUpdate = () => {
               <ValidatedField
                 type="text"
                 name="name"
-                label={translate('userManagement.firstName')}
+                label={translate('videoManagement.name')}
                 validate={{
                   maxLength: {
                     value: 60,
@@ -86,30 +86,26 @@ export const VideoManagementUpdate = () => {
               <ValidatedField
                 type="text"
                 name="code"
-                label={translate('userManagement.login')}
+                label={translate('videoManagement.code')}
                 validate={{
                   required: {
                     value: true,
                     message: translate('register.messages.validate.login.required'),
                   },
-                  pattern: {
-                    value: /^[a-zA-Z0-9!$&*+=?^_`{|}~.-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$|^[_.@A-Za-z0-9-]+$/,
-                    message: translate('register.messages.validate.login.pattern'),
-                  },
                   minLength: {
                     value: 1,
-                    message: translate('register.messages.validate.login.minlength'),
+                    message: translate('entity.validation.minlength'),
                   },
                   maxLength: {
                     value: 60,
-                    message: translate('register.messages.validate.login.maxlength'),
+                    message: translate('entity.validation.maxlength', { max: 60 }),
                   },
                 }}
               />
               <ValidatedField
                 type="text"
                 name="pic"
-                label={translate('userManagement.lastName')}
+                label={translate('videoManagement.pic')}
                 validate={{
                   maxLength: {
                     value: 255,
@@ -121,7 +117,7 @@ export const VideoManagementUpdate = () => {
               <ValidatedField
                 type="text"
                 name="url"
-                label={translate('userManagement.lastName')}
+                label={translate('videoManagement.url')}
                 validate={{
                   maxLength: {
                     value: 255,
@@ -132,7 +128,7 @@ export const VideoManagementUpdate = () => {
               <ValidatedField
                 type="text"
                 name="desc"
-                label={translate('userManagement.lastName')}
+                label={translate('videoManagement.desc')}
                 validate={{
                   maxLength: {
                     value: 255,

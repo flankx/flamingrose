@@ -88,14 +88,14 @@ export const VideoManagement = () => {
   return (
     <div>
       <h2 id="user-management-page-heading" data-cy="userManagementPageHeading">
-        <Translate contentKey="userManagement.home.title">Users</Translate>
+        <Translate contentKey="videoManagement.home.title">Meidia Center</Translate>
         <div className="d-flex justify-content-end">
           <Button className="me-2" color="info" onClick={handleSyncList} disabled={loading}>
             <FontAwesomeIcon icon="sync" spin={loading} />{' '}
-            <Translate contentKey="userManagement.home.refreshListLabel">Refresh List</Translate>
+            <Translate contentKey="videoManagement.home.refreshListLabel">Refresh List</Translate>
           </Button>
           <Link to="new" className="btn btn-primary jh-create-entity">
-            <FontAwesomeIcon icon="plus" /> <Translate contentKey="userManagement.home.createLabel">Create a new user</Translate>
+            <FontAwesomeIcon icon="plus" /> <Translate contentKey="videoManagement.home.createLabel">Create a new media</Translate>
           </Link>
         </div>
       </h2>
@@ -106,31 +106,31 @@ export const VideoManagement = () => {
               <Translate contentKey="global.field.id">ID</Translate> <FontAwesomeIcon icon={getSortIconByFieldName('id')} />
             </th>
             <th className="hand" onClick={sort('name')}>
-              <Translate contentKey="userManagement.login">Name</Translate> <FontAwesomeIcon icon={getSortIconByFieldName('name')} />
+              <Translate contentKey="videoManagement.name">Name</Translate> <FontAwesomeIcon icon={getSortIconByFieldName('name')} />
             </th>
             <th className="hand" onClick={sort('code')}>
-              <Translate contentKey="userManagement.email">Code</Translate> <FontAwesomeIcon icon={getSortIconByFieldName('code')} />
+              <Translate contentKey="videoManagement.code">Code</Translate> <FontAwesomeIcon icon={getSortIconByFieldName('code')} />
             </th>
             <th />
             <th className="hand" onClick={sort('pic')}>
-              <Translate contentKey="userManagement.langKey">Pic</Translate> <FontAwesomeIcon icon={getSortIconByFieldName('pic')} />
+              <Translate contentKey="videoManagement.pic">Pic</Translate> <FontAwesomeIcon icon={getSortIconByFieldName('pic')} />
             </th>
             <th>
-              <Translate contentKey="userManagement.profiles">Url</Translate>
+              <Translate contentKey="videoManagement.url">Url</Translate>
             </th>
             <th>
-              <Translate contentKey="userManagement.profiles">Desc</Translate>
+              <Translate contentKey="videoManagement.desc">Desc</Translate>
             </th>
             <th className="hand" onClick={sort('createdDate')}>
-              <Translate contentKey="userManagement.createdDate">Created Date</Translate>{' '}
+              <Translate contentKey="videoManagement.createdDate">Created Date</Translate>{' '}
               <FontAwesomeIcon icon={getSortIconByFieldName('createdDate')} />
             </th>
             <th className="hand" onClick={sort('lastModifiedBy')}>
-              <Translate contentKey="userManagement.lastModifiedBy">Last Modified By</Translate>{' '}
+              <Translate contentKey="videoManagement.lastModifiedBy">Last Modified By</Translate>{' '}
               <FontAwesomeIcon icon={getSortIconByFieldName('lastModifiedBy')} />
             </th>
             <th id="modified-date-sort" className="hand" onClick={sort('lastModifiedDate')}>
-              <Translate contentKey="userManagement.lastModifiedDate">Last Modified Date</Translate>{' '}
+              <Translate contentKey="videoManagement.lastModifiedDate">Last Modified Date</Translate>{' '}
               <FontAwesomeIcon icon={getSortIconByFieldName('lastModifiedDate')} />
             </th>
             <th />
@@ -138,7 +138,7 @@ export const VideoManagement = () => {
         </thead>
         <tbody>
           {videos.map((video, i) => (
-            <tr id={video.code} key={`video-${i}`}>
+            <tr id={video.id} key={`video-${i}`}>
               <td>
                 <Button tag={Link} to={video.id} color="link" size="sm">
                   {video.id}
@@ -146,6 +146,7 @@ export const VideoManagement = () => {
               </td>
               <td>{video.name}</td>
               <td>{video.code}</td>
+              <td />
               <td>{video.pic}</td>
               <td>{video.url}</td>
               <td>{video.desc}</td>
@@ -160,7 +161,7 @@ export const VideoManagement = () => {
               </td>
               <td className="text-end">
                 <div className="btn-group flex-btn-group-container">
-                  <Button tag={Link} to={video.id} color="info" size="sm">
+                  <Button tag={Link} to={`${video.id}`} color="info" size="sm">
                     <FontAwesomeIcon icon="eye" />{' '}
                     <span className="d-none d-md-inline">
                       <Translate contentKey="entity.action.view">View</Translate>

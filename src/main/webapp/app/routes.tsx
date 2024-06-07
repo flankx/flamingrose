@@ -27,6 +27,12 @@ const Admin = Loadable({
   loader: () => import(/* webpackChunkName: "administration" */ 'app/modules/administration'),
   loading: () => loading,
 });
+
+const Entity = Loadable({
+  loader: () => import(/* webpackChunkName: "entity" */ 'app/modules/entity'),
+  loading: () => loading,
+});
+
 const AppRoutes = () => {
   const pageLocation = useLocation();
   React.useEffect(() => {
@@ -67,6 +73,7 @@ const AppRoutes = () => {
           element={
             <PrivateRoute hasAnyAuthorities={[AUTHORITIES.USER]}>
               <EntitiesRoutes />
+              <Entity />
             </PrivateRoute>
           }
         />
