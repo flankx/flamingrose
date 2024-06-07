@@ -4,7 +4,6 @@ import com.github.flamingrose.domain.Video;
 import com.github.flamingrose.repository.VideoRepository;
 import com.github.flamingrose.security.AuthoritiesConstants;
 import com.github.flamingrose.service.VideoService;
-import com.github.flamingrose.service.dto.VideoDTO;
 import jakarta.validation.Valid;
 import java.net.URISyntaxException;
 import java.util.*;
@@ -29,8 +28,8 @@ import tech.jhipster.web.util.ResponseUtil;
 public class VideoResource {
 
     private static final List<String> ALLOWED_ORDERED_PROPERTIES = Collections.unmodifiableList(
-            Arrays.asList("id", "name", "code", "pic", "url", "createdBy", "createdDate", "lastModifiedBy",
-                    "lastModifiedDate"));
+        Arrays.asList("id", "name", "code", "pic", "url", "createdBy", "createdDate", "lastModifiedBy", "lastModifiedDate")
+    );
 
     private final Logger logger = LoggerFactory.getLogger(VideoResource.class);
 
@@ -48,27 +47,35 @@ public class VideoResource {
 
     @PostMapping("/add")
     @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.USER + "\")")
-    public ResponseEntity<Video> add(@Valid @RequestBody VideoDTO videoDTO) throws URISyntaxException {
-        return ResponseEntity.ok().body(videoRepository.save(videoDTO));
+    public ResponseEntity<Video> add(@Valid @RequestBody Video video) throws URISyntaxException {
+        return ResponseEntity.ok().body(videoRepository.save(video));
     }
 
     @PutMapping({ "/update", "/update/{id}" })
     @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.USER + "\")")
-    public ResponseEntity<Video> updateUser(
-            @PathVariable(name = "id", required = false) Long id,
-            @Valid @RequestBody VideoDTO videoDTO) {
-        Video updateVideo = videoRepository.save(videoDTO);
-        return ResponseEntity.ok()
-                .headers(HeaderUtil.createAlert(applicationName, "userManagement.updated", "" + updateVideo.getId()))
-                .body(updateVideo);
+    public ResponseEntity<Video> updateUser(@PathVariable(name = "id", required = false) Long id, @Valid @RequestBody Video video) {
+        Optional<Video> updateVideo = Optional.of(videoRepository.findById(video.getId()))
+            .filter(Optional::isPresent)
+            .map(Optional::get)
+            .map(entity -> {
+                entity.setId(video.getId());
+                entity.setName(video.getName());
+                entity.setCode(video.getCode());
+                entity.setPic(video.getPic());
+                entity.setUrl(video.getUrl());
+                entity.setDesc(video.getDesc());
+                videoRepository.save(entity);
+                logger.info("Changed Information for video: {}", entity);
+                return entity;
+            });
+        return ResponseUtil.wrapOrNotFound(updateVideo, HeaderUtil.createAlert(applicationName, "userManagement.updated", "" + id));
     }
 
     @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.USER + "\")")
     public ResponseEntity<Void> deleteUser(@PathVariable("id") Long id) {
         videoRepository.deleteById(id);
-        return ResponseEntity.noContent()
-                .headers(HeaderUtil.createAlert(applicationName, "userManagement.deleted", "" + id)).build();
+        return ResponseEntity.noContent().headers(HeaderUtil.createAlert(applicationName, "userManagement.deleted", "" + id)).build();
     }
 
     @GetMapping("/query/{id}")
@@ -85,8 +92,7 @@ public class VideoResource {
         }
 
         final Page<Video> page = videoRepository.findAll(pageable);
-        HttpHeaders headers = PaginationUtil
-                .generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
