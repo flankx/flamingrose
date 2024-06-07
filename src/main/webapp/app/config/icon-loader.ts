@@ -37,6 +37,7 @@ import {
   faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 export const loadIcons = () => {
@@ -77,5 +78,6 @@ export const loadIcons = () => {
     faVideo,
     faPlay,
     faXmark,
+    faYoutube,
   );
 };

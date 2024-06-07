@@ -18,10 +18,10 @@ const VideoPopup = ({ poster, videoUrl }) => {
   return (
     <div>
       <strong>{videoUrl}</strong>
-      <button type="button" className="btn btn-secondary" onClick={openModal}>
+      <button title="play" type="button" className="btn btn-secondary" onClick={openModal}>
         <FontAwesomeIcon icon="play" />
       </button>
-      <button type="button" className="btn btn-secondary" onClick={closeModal}>
+      <button title="xmark" type="button" className="btn btn-secondary" onClick={closeModal}>
         <FontAwesomeIcon icon="xmark" />
       </button>
       {isOpen && <Player poster={poster} src={videoUrl} autoPlay />}

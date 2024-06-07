@@ -8,6 +8,7 @@
       "entities": {
         "main": "Entities",
         "player": "H5 Player",
+        "youtube": "Media Center",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

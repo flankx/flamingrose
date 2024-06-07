@@ -8,6 +8,7 @@
       "entities": {
         "main": "数据",
         "player": "播放器",
+        "youtube": "媒体中心",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
