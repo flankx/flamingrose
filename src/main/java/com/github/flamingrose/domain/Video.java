@@ -27,7 +27,7 @@ public class Video extends AbstractAuditingEntity<Long> {
 
     // @JsonIgnore
     @NotNull
-    @Size(min = 60, max = 60)
+    @Size(min = 1, max = 60)
     @Column(name = "code", length = 60, unique = true, nullable = false)
     private String code;
 
@@ -93,6 +93,7 @@ public class Video extends AbstractAuditingEntity<Long> {
 
     @Override
     public String toString() {
-        return "Video [id=" + id + ", name=" + name + ", code=" + code + ", pic=" + pic + ", url=" + url + ", desc=" + desc + "]";
+        return "Video [id=" + id + ", name=" + name + ", code=" + code + ", pic=" + pic + ", url=" + url + ", desc="
+                + desc + "]";
     }
 }

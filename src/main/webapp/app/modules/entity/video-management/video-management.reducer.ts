@@ -19,7 +19,7 @@ const videoUrl = 'api/video';
 
 // Async Actions
 export const getVideos = createAsyncThunk('videoManagement/fetch_videos', async ({ page, size, sort }: IQueryParams) => {
-  const requestUrl = `${videoUrl}${sort ? `?page=${page}&size=${size}&sort=${sort}` : ''}`;
+  const requestUrl = `${videoUrl}/page${sort ? `?page=${page}&size=${size}&sort=${sort}` : ''}`;
   return axios.get<IVideo[]>(requestUrl);
 });
 

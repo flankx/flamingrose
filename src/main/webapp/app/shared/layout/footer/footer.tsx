@@ -15,7 +15,10 @@ const Footer = () => (
   //   </Row>
   // </div>
 
-  <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+  <footer
+    style={{ display: 'flex', bottom: 0, width: '100%' }}
+    className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+  >
     <p className="col-md-4 mb-0 text-muted">Copyright © {new Date().getFullYear()} FlankX</p>
 
     <a

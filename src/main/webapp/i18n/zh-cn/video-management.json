@@ -1,0 +1,28 @@
+{
+  "videoManagement": {
+    "home": {
+      "title": "媒体",
+      "refreshListLabel": "Refresh list",
+      "createLabel": "创建新媒体",
+      "createOrEditLabel": "创建或编辑媒体"
+    },
+    "created": "媒体 {{ param }} 创建成功",
+    "updated": "媒体 {{ param }} 更新成功",
+    "deleted": "媒体 {{ param }} 删除成功",
+    "delete": {
+      "question": "你确定要删除媒体 {{ id }} ?"
+    },
+    "detail": {
+      "title": "媒体"
+    },
+    "name": "名称",
+    "code": "编码",
+    "pic": "缩略图",
+    "url": "地址",
+    "desc": "描述",
+    "createdBy": "创建人",
+    "createdDate": "创建时间",
+    "lastModifiedBy": "最近修改人",
+    "lastModifiedDate": "最近修改时间"
+  }
+}

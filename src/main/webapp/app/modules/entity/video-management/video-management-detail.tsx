@@ -23,50 +23,50 @@ export const VideoManagementDetail = () => {
   return (
     <div>
       <h2>
-        <Translate contentKey="userManagement.detail.title">Title</Translate> [<strong>{video.code}</strong>]
+        <Translate contentKey="videoManagement.detail.title">Title</Translate> [<strong>{video.code}</strong>]
       </h2>
       <Row size="md">
         <dl className="jh-entity-details">
           <dt>
-            <Translate contentKey="userManagement.login">id</Translate>
+            <Translate contentKey="global.field.id">id</Translate>
           </dt>
           <dd>
             <span>{video.id}</span>
           </dd>
           <dt>
-            <Translate contentKey="userManagement.firstName">name</Translate>
+            <Translate contentKey="videoManagement.name">name</Translate>
           </dt>
           <dd>{video.name}</dd>
           <dt>
-            <Translate contentKey="userManagement.lastName">code</Translate>
+            <Translate contentKey="videoManagement.code">code</Translate>
           </dt>
           <dd>{video.code}</dd>
           <dt>
-            <Translate contentKey="userManagement.email">pic</Translate>
+            <Translate contentKey="videoManagement.pic">pic</Translate>
           </dt>
           <dd>{video.pic}</dd>
           <dt>
-            <Translate contentKey="userManagement.langKey">url</Translate>
+            <Translate contentKey="videoManagement.url">url</Translate>
           </dt>
           <dd>{video.url}</dd>
           <dt>
-            <Translate contentKey="userManagement.profiles">desc</Translate>
+            <Translate contentKey="videoManagement.desc">desc</Translate>
           </dt>
           <dd>{video.desc}</dd>
           <dt>
-            <Translate contentKey="userManagement.createdBy">Created By</Translate>
+            <Translate contentKey="videoManagement.createdBy">Created By</Translate>
           </dt>
           <dd>{video.createdBy}</dd>
           <dt>
-            <Translate contentKey="userManagement.createdDate">Created Date</Translate>
+            <Translate contentKey="videoManagement.createdDate">Created Date</Translate>
           </dt>
           <dd>{video.createdDate ? <TextFormat value={video.createdDate} type="date" format={APP_DATE_FORMAT} blankOnInvalid /> : null}</dd>
           <dt>
-            <Translate contentKey="userManagement.lastModifiedBy">Last Modified By</Translate>
+            <Translate contentKey="videoManagement.lastModifiedBy">Last Modified By</Translate>
           </dt>
           <dd>{video.lastModifiedBy}</dd>
           <dt>
-            <Translate contentKey="userManagement.lastModifiedDate">Last Modified Date</Translate>
+            <Translate contentKey="videoManagement.lastModifiedDate">Last Modified Date</Translate>
           </dt>
           <dd>
             {video.lastModifiedDate ? (
@@ -75,7 +75,7 @@ export const VideoManagementDetail = () => {
           </dd>
         </dl>
       </Row>
-      <Button tag={Link} to="/entiity/video-management" replace color="info">
+      <Button tag={Link} to="/entity/video-management" replace color="info">
         <FontAwesomeIcon icon="arrow-left" />{' '}
         <span className="d-none d-md-inline">
           <Translate contentKey="entity.action.back">Back</Translate>
