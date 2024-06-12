@@ -8,10 +8,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "jhi_video")
-public class Video extends AbstractAuditingEntity<Long> {
+public class Video extends AbstractAuditingEntity<Long> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -40,7 +41,7 @@ public class Video extends AbstractAuditingEntity<Long> {
     private String url;
 
     @Size(max = 255)
-    @Column(name = "desc", length = 255)
+    @Column(name = "description", length = 255)
     private String desc;
 
     public Long getId() {
@@ -93,7 +94,6 @@ public class Video extends AbstractAuditingEntity<Long> {
 
     @Override
     public String toString() {
-        return "Video [id=" + id + ", name=" + name + ", code=" + code + ", pic=" + pic + ", url=" + url + ", desc="
-                + desc + "]";
+        return "Video [id=" + id + ", name=" + name + ", code=" + code + ", pic=" + pic + ", url=" + url + ", desc=" + desc + "]";
     }
 }
