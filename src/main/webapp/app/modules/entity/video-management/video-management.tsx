@@ -4,6 +4,7 @@ import { Button, Table, Badge, Alert } from 'reactstrap';
 import { Translate, TextFormat, JhiPagination, JhiItemCount, getPaginationState } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 import { APP_DATETIME_FORMAT } from 'app/config/constants';
 import { ASC, DESC, ITEMS_PER_PAGE, SORT } from 'app/shared/util/pagination.constants';
@@ -151,8 +152,9 @@ export const VideoManagement = () => {
               <td>{video.pic}</td>
               <td>
                 <Alert>
-                  <Link to="/login" className="alert-link">
-                    <Player poster="/content/images/player_poster.png" src={video.url} autoPlay />
+                  <Link to="/entity/video-play" state={{ url: video.url }} className="alert-link">
+                    <FontAwesomeIcon icon={faYoutube} />
+                    <Translate contentKey="entity.action.play">Play</Translate>
                   </Link>
                 </Alert>
               </td>

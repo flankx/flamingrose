@@ -100,7 +100,8 @@
       "open": "Open",
       "save": "Save",
       "view": "View",
-      "show": "Show {{otherEntity}}"
+      "show": "Show {{otherEntity}}",
+      "play": "Play"
     },
     "detail": {
       "field": "Field",

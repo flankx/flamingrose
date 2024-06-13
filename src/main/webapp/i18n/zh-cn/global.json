@@ -100,7 +100,8 @@
       "open": "打开",
       "save": "保存",
       "view": "查看",
-      "show": "显示 {{otherEntity}}"
+      "show": "显示 {{otherEntity}}",
+      "play": "播放"
     },
     "detail": {
       "field": "字段",
