@@ -5,7 +5,7 @@ import { Translate, TextFormat, JhiPagination, JhiItemCount, getPaginationState 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 
-import { APP_DATE_FORMAT } from 'app/config/constants';
+import { APP_DATETIME_FORMAT } from 'app/config/constants';
 import { ASC, DESC, ITEMS_PER_PAGE, SORT } from 'app/shared/util/pagination.constants';
 import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
 import { getUsersAsAdmin, updateUser } from './user-management.reducer';
@@ -175,12 +175,12 @@ export const UserManagement = () => {
                   : null}
               </td>
               <td>
-                {user.createdDate ? <TextFormat value={user.createdDate} type="date" format={APP_DATE_FORMAT} blankOnInvalid /> : null}
+                {user.createdDate ? <TextFormat value={user.createdDate} type="date" format={APP_DATETIME_FORMAT} blankOnInvalid /> : null}
               </td>
               <td>{user.lastModifiedBy}</td>
               <td>
                 {user.lastModifiedDate ? (
-                  <TextFormat value={user.lastModifiedDate} type="date" format={APP_DATE_FORMAT} blankOnInvalid />
+                  <TextFormat value={user.lastModifiedDate} type="date" format={APP_DATETIME_FORMAT} blankOnInvalid />
                 ) : null}
               </td>
               <td className="text-end">

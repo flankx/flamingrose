@@ -4,7 +4,7 @@ import { Button, Row, Badge } from 'reactstrap';
 import { Translate, TextFormat } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { APP_DATE_FORMAT } from 'app/config/constants';
+import { APP_DATETIME_FORMAT } from 'app/config/constants';
 import { languages } from 'app/config/translation';
 import { getUser } from './user-management.reducer';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
@@ -65,7 +65,9 @@ export const UserManagementDetail = () => {
           <dt>
             <Translate contentKey="userManagement.createdDate">Created Date</Translate>
           </dt>
-          <dd>{user.createdDate ? <TextFormat value={user.createdDate} type="date" format={APP_DATE_FORMAT} blankOnInvalid /> : null}</dd>
+          <dd>
+            {user.createdDate ? <TextFormat value={user.createdDate} type="date" format={APP_DATETIME_FORMAT} blankOnInvalid /> : null}
+          </dd>
           <dt>
             <Translate contentKey="userManagement.lastModifiedBy">Last Modified By</Translate>
           </dt>
@@ -75,7 +77,7 @@ export const UserManagementDetail = () => {
           </dt>
           <dd>
             {user.lastModifiedDate ? (
-              <TextFormat value={user.lastModifiedDate} type="date" format={APP_DATE_FORMAT} blankOnInvalid />
+              <TextFormat value={user.lastModifiedDate} type="date" format={APP_DATETIME_FORMAT} blankOnInvalid />
             ) : null}
           </dd>
           <dt>

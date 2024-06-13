@@ -4,7 +4,7 @@ import { Button, Row, Badge } from 'reactstrap';
 import { Translate, TextFormat } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { APP_DATE_FORMAT } from 'app/config/constants';
+import { APP_DATETIME_FORMAT } from 'app/config/constants';
 import { languages } from 'app/config/translation';
 import { getVideo } from './video-management.reducer';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
@@ -60,7 +60,9 @@ export const VideoManagementDetail = () => {
           <dt>
             <Translate contentKey="videoManagement.createdDate">Created Date</Translate>
           </dt>
-          <dd>{video.createdDate ? <TextFormat value={video.createdDate} type="date" format={APP_DATE_FORMAT} blankOnInvalid /> : null}</dd>
+          <dd>
+            {video.createdDate ? <TextFormat value={video.createdDate} type="date" format={APP_DATETIME_FORMAT} blankOnInvalid /> : null}
+          </dd>
           <dt>
             <Translate contentKey="videoManagement.lastModifiedBy">Last Modified By</Translate>
           </dt>
@@ -70,7 +72,7 @@ export const VideoManagementDetail = () => {
           </dt>
           <dd>
             {video.lastModifiedDate ? (
-              <TextFormat value={video.lastModifiedDate} type="date" format={APP_DATE_FORMAT} blankOnInvalid />
+              <TextFormat value={video.lastModifiedDate} type="date" format={APP_DATETIME_FORMAT} blankOnInvalid />
             ) : null}
           </dd>
         </dl>

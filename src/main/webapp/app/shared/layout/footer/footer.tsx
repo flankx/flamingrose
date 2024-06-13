@@ -1,25 +1,11 @@
-import './footer.scss';
-
 import React from 'react';
-import { Translate } from 'react-jhipster';
-import { Col, Row } from 'reactstrap';
 
 const Footer = () => (
-  // <div className="footer page-content">
-  //   <Row>
-  //     <Col md="12">
-  //       <p>
-  //         <Translate contentKey="footer">Your footer</Translate>
-  //       </p>
-  //     </Col>
-  //   </Row>
-  // </div>
-
   <footer
-    style={{ display: 'flex', bottom: 0, width: '100%' }}
+    style={{ display: 'flex', bottom: 0, width: '100%', height: '50px' }}
     className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
   >
-    <p className="col-md-4 mb-0 text-muted">Copyright © {new Date().getFullYear()} FlankX</p>
+    <p className="col-md-4 mb-0 text-muted">Copyright &copy; {new Date().getFullYear()} FlankX</p>
 
     <a
       href="/"

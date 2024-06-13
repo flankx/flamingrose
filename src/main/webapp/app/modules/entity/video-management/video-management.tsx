@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Button, Table, Badge } from 'reactstrap';
+import { Button, Table, Badge, Alert } from 'reactstrap';
 import { Translate, TextFormat, JhiPagination, JhiItemCount, getPaginationState } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 
-import { APP_DATE_FORMAT } from 'app/config/constants';
+import { APP_DATETIME_FORMAT } from 'app/config/constants';
 import { ASC, DESC, ITEMS_PER_PAGE, SORT } from 'app/shared/util/pagination.constants';
 import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
 import { getVideos } from './video-management.reducer';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
+import { Player } from 'video-react';
 
 export const VideoManagement = () => {
   const dispatch = useAppDispatch();
@@ -148,15 +149,23 @@ export const VideoManagement = () => {
               <td>{video.code}</td>
               <td />
               <td>{video.pic}</td>
-              <td>{video.url}</td>
+              <td>
+                <Alert>
+                  <Link to="/login" className="alert-link">
+                    <Player poster="/content/images/player_poster.png" src={video.url} autoPlay />
+                  </Link>
+                </Alert>
+              </td>
               <td>{video.desc}</td>
               <td>
-                {video.createdDate ? <TextFormat value={video.createdDate} type="date" format={APP_DATE_FORMAT} blankOnInvalid /> : null}
+                {video.createdDate ? (
+                  <TextFormat value={video.createdDate} type="date" format={APP_DATETIME_FORMAT} blankOnInvalid />
+                ) : null}
               </td>
               <td>{video.lastModifiedBy}</td>
               <td>
                 {video.lastModifiedDate ? (
-                  <TextFormat value={video.lastModifiedDate} type="date" format={APP_DATE_FORMAT} blankOnInvalid />
+                  <TextFormat value={video.lastModifiedDate} type="date" format={APP_DATETIME_FORMAT} blankOnInvalid />
                 ) : null}
               </td>
               <td className="text-end">
