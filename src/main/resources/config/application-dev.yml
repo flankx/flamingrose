@@ -13,12 +13,12 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
-logging:
-  level:
-    #    ROOT: DEBUG
-    #    tech.jhipster: DEBUG
-    #    org.hibernate.SQL: DEBUG
-    org.hibernate.orm.jdbc.bind: TRACE
+# logging:
+#   level:
+#    ROOT: DEBUG
+#    tech.jhipster: DEBUG
+#    org.hibernate.SQL: DEBUG
+#    org.hibernate.orm.jdbc.bind: TRACE
 #    com.github.flamingrose: DEBUG
 
 spring:

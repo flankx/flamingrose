@@ -68,14 +68,17 @@ public class VideoResource {
                 logger.info("Changed Information for video: {}", entity);
                 return entity;
             });
-        return ResponseUtil.wrapOrNotFound(updateVideo, HeaderUtil.createAlert(applicationName, "userManagement.updated", "" + id));
+        return ResponseUtil.wrapOrNotFound(
+            updateVideo,
+            HeaderUtil.createAlert(applicationName, "videoManagement.updated", "" + video.getName())
+        );
     }
 
     @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.USER + "\")")
     public ResponseEntity<Void> deleteUser(@PathVariable("id") Long id) {
         videoRepository.deleteById(id);
-        return ResponseEntity.noContent().headers(HeaderUtil.createAlert(applicationName, "userManagement.deleted", "" + id)).build();
+        return ResponseEntity.noContent().headers(HeaderUtil.createAlert(applicationName, "videoManagement.deleted", "" + id)).build();
     }
 
     @GetMapping("/query/{id}")
