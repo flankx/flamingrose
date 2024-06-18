@@ -426,7 +426,11 @@
                             <image>${jib-maven-plugin.image}</image>
                             <platforms>
                                 <platform>
-                                    <architecture>${jib-maven-plugin.architecture}</architecture>
+                                    <architecture>amd64</architecture>
+                                    <os>linux</os>
+                                </platform>
+                                <platform>
+                                    <architecture>arm64</architecture>
                                     <os>linux</os>
                                 </platform>
                             </platforms>
