@@ -4,6 +4,7 @@ import { Button, Table } from 'reactstrap';
 import { Translate, TextFormat, JhiPagination, JhiItemCount, getPaginationState } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 import { APP_DATETIME_FORMAT } from 'app/config/constants';
 import { ASC, DESC, ITEMS_PER_PAGE, SORT } from 'app/shared/util/pagination.constants';
@@ -152,7 +153,8 @@ export const VideoManagement = () => {
               <td>
                 <VideoAlert id={video.id} url={video.url}>
                   <Link to="/entity/video-play" state={{ url: video.url }} className="alert-link" id={'tooltip-' + video.id}>
-                    <Translate contentKey="entity.action.play">Play</Translate>
+                    {/* <Translate contentKey="entity.action.play">Play</Translate> */}
+                    <FontAwesomeIcon icon={faYoutube} size="xl"></FontAwesomeIcon>
                   </Link>
                 </VideoAlert>
               </td>

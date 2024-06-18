@@ -6,7 +6,7 @@ const VideoAlert = ({ id, url, children }) => {
   const toggle = () => setTooltipOpen(!tooltipOpen);
 
   return (
-    <Alert color="primary">
+    <Alert>
       {children}
       <Tooltip isOpen={tooltipOpen} target={'tooltip-' + id} toggle={toggle}>
         {url}
