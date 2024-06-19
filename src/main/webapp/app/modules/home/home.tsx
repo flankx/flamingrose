@@ -7,6 +7,8 @@ import { Row, Col, Alert } from 'reactstrap';
 
 import { useAppSelector } from 'app/config/store';
 
+import Time from './time';
+
 export const Home = () => {
   const account = useAppSelector(state => state.authentication.account);
 
@@ -20,7 +22,7 @@ export const Home = () => {
           <Translate contentKey="home.title">Welcome, Java Hipster!</Translate>
         </h1>
         <p className="lead">
-          <Translate contentKey="home.subtitle">This is your homepage</Translate>
+          <Time />
         </p>
         {account?.login ? (
           <div>
