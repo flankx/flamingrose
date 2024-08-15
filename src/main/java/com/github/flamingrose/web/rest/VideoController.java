@@ -25,13 +25,13 @@ import tech.jhipster.web.util.ResponseUtil;
 
 @RestController
 @RequestMapping("/api/video")
-public class VideoResource {
+public class VideoController {
 
     private static final List<String> ALLOWED_ORDERED_PROPERTIES = Collections.unmodifiableList(
         Arrays.asList("id", "name", "code", "pic", "url", "createdBy", "createdDate", "lastModifiedBy", "lastModifiedDate")
     );
 
-    private final Logger logger = LoggerFactory.getLogger(VideoResource.class);
+    private final Logger logger = LoggerFactory.getLogger(VideoController.class);
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
@@ -40,7 +40,7 @@ public class VideoResource {
 
     private final VideoRepository videoRepository;
 
-    public VideoResource(VideoService videoService, VideoRepository videoRepository) {
+    public VideoController(VideoService videoService, VideoRepository videoRepository) {
         this.videoService = videoService;
         this.videoRepository = videoRepository;
     }

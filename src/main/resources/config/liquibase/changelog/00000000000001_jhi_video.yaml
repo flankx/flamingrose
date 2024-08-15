@@ -1,0 +1,82 @@
+databaseChangeLog:
+  - changeSet:
+      id: '1::jhi_video::createTable'
+      author: FlankX
+      changes:
+        - createTable:
+            # catalogName: flamingrose
+            remarks: My Video
+            # schemaName: public
+            tableName: jhi_video
+            tablespace: My Video
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(64)
+              - column:
+                  name: type
+                  type: varchar(16)
+              - column:
+                  name: code
+                  type: varchar(64)
+                  constraints:
+                    unique: true
+                    uniqueConstraintName: code_UK
+                    nullable: false
+              - column:
+                  name: pic
+                  type: varchar(255)
+              - column:
+                  name: url
+                  type: varchar(255)
+              - column:
+                  name: description
+                  type: varchar(255)
+              - column:
+                  name: created_by
+                  type: varchar(64)
+              - column:
+                  name: created_date
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: last_modified_by
+                  type: varchar(64)
+              - column:
+                  name: last_modified_date
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+
+        - createIndex:
+            clustered: true
+            indexName: name_IDX
+            # schemaName: public
+            tableName: jhi_video
+            tablespace: My Video
+            unique: false
+            columns:
+              - column:
+                  descending: true
+                  name: name
+
+        - loadData:
+            # catalogName: flamingrose
+            columns:
+              - column:
+                  name: id
+                  type: NUMERIC
+            commentLineStartsWith: //
+            encoding: UTF-8
+            file: ../data/video.csv
+            quotchar: "'"
+            relativeToChangelogFile: true
+            # schemaName:  public
+            separator: ;
+            tableName: jhi_video
+            usePreparedStatements: true

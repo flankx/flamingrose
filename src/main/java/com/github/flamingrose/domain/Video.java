@@ -32,6 +32,11 @@ public class Video extends AbstractAuditingEntity<Long> implements Serializable 
     @Column(name = "code", length = 60, unique = true, nullable = false)
     private String code;
 
+    @NotNull
+    @Size(min = 1, max = 16)
+    @Column(name = "type", length = 16, unique = true, nullable = false)
+    private String type;
+
     @Size(max = 255)
     @Column(name = "pic", length = 255)
     private String pic;
