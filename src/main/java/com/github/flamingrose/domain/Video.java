@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+
 import java.io.Serializable;
 
 @Entity
@@ -22,14 +23,14 @@ public class Video extends AbstractAuditingEntity<Long> implements Serializable 
 
     @NotNull
     // @Pattern(regexp = Constants.LOGIN_REGEX)
-    @Size(min = 1, max = 50)
-    @Column(name = "name", length = 50, nullable = false)
+    @Size(min = 1, max = 64)
+    @Column(name = "name", length = 64, nullable = false)
     private String name;
 
     // @JsonIgnore
     @NotNull
-    @Size(min = 1, max = 60)
-    @Column(name = "code", length = 60, unique = true, nullable = false)
+    @Size(min = 1, max = 64)
+    @Column(name = "code", length = 64, unique = true, nullable = false)
     private String code;
 
     @NotNull
@@ -63,6 +64,14 @@ public class Video extends AbstractAuditingEntity<Long> implements Serializable 
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getCode() {
@@ -99,6 +108,14 @@ public class Video extends AbstractAuditingEntity<Long> implements Serializable 
 
     @Override
     public String toString() {
-        return "Video [id=" + id + ", name=" + name + ", code=" + code + ", pic=" + pic + ", url=" + url + ", desc=" + desc + "]";
+        return "Video{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", type='" + type + '\'' +
+            ", code='" + code + '\'' +
+            ", pic='" + pic + '\'' +
+            ", url='" + url + '\'' +
+            ", desc='" + desc + '\'' +
+            '}';
     }
 }

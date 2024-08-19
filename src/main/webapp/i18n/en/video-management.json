@@ -16,6 +16,7 @@
       "title": "Media"
     },
     "name": "Name",
+    "type": "Type",
     "code": "Code",
     "pic": "Picture",
     "url": "Url",

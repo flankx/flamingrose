@@ -110,6 +110,9 @@ export const VideoManagement = () => {
             <th className="hand" onClick={sort('name')}>
               <Translate contentKey="videoManagement.name">Name</Translate> <FontAwesomeIcon icon={getSortIconByFieldName('name')} />
             </th>
+            <th className="hand" onClick={sort('type')}>
+              <Translate contentKey="videoManagement.type">Type</Translate> <FontAwesomeIcon icon={getSortIconByFieldName('type')} />
+            </th>
             <th className="hand" onClick={sort('code')}>
               <Translate contentKey="videoManagement.code">Code</Translate> <FontAwesomeIcon icon={getSortIconByFieldName('code')} />
             </th>
@@ -147,12 +150,18 @@ export const VideoManagement = () => {
                 </Button>
               </td>
               <td>{video.name}</td>
+              <td>{video.type}</td>
               <td>{video.code}</td>
               <td />
               <td>{video.pic}</td>
               <td>
                 <VideoAlert id={video.id} url={video.url}>
-                  <Link to="/entity/video-play" state={{ url: video.url }} className="alert-link" id={'tooltip-' + video.id}>
+                  <Link
+                    to="/entity/video-play"
+                    state={{ type: video.type, code: video.code, url: video.url }}
+                    className="alert-link"
+                    id={'tooltip-' + video.id}
+                  >
                     {/* <Translate contentKey="entity.action.play">Play</Translate> */}
                     <FontAwesomeIcon icon={faYoutube} size="xl"></FontAwesomeIcon>
                   </Link>

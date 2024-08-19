@@ -85,6 +85,17 @@ export const VideoManagementUpdate = () => {
               />
               <ValidatedField
                 type="text"
+                name="type"
+                label={translate('videoManagement.type')}
+                validate={{
+                  maxLength: {
+                    value: 60,
+                    message: translate('entity.validation.maxlength', { min: 4, max: 16 }),
+                  },
+                }}
+              />
+              <ValidatedField
+                type="text"
                 name="code"
                 label={translate('videoManagement.code')}
                 validate={{

@@ -17,7 +17,7 @@ export const VideoPlay = () => {
     navigate('/entity/video-management');
   };
 
-  return <VideoModal showModal={showModal} handleClose={handleClose} url={state.url} />;
+  return <VideoModal showModal={showModal} handleClose={handleClose} type={state.type} code={state.code} url={state.url} />;
 };
 
 export default VideoPlay;

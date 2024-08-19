@@ -1,6 +1,7 @@
 export interface IVideo {
   id?: any;
   name?: string;
+  type?: string;
   code?: string;
   pic?: string;
   url?: string;
@@ -14,6 +15,7 @@ export interface IVideo {
 export const defaultValue: Readonly<IVideo> = {
   id: '',
   name: '',
+  type: '',
   code: '',
   pic: '',
   url: '',

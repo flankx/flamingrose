@@ -38,6 +38,10 @@ export const VideoManagementDetail = () => {
           </dt>
           <dd>{video.name}</dd>
           <dt>
+            <Translate contentKey="videoManagement.type">type</Translate>
+          </dt>
+          <dd>{video.type}</dd>
+          <dt>
             <Translate contentKey="videoManagement.code">code</Translate>
           </dt>
           <dd>{video.code}</dd>
