@@ -12,6 +12,7 @@ import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-u
 import { getVideos } from './video-management.reducer';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 import VideoAlert from '../video-play/video-alert';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 export const VideoManagement = () => {
   const dispatch = useAppDispatch();
@@ -163,7 +164,7 @@ export const VideoManagement = () => {
                     id={'tooltip-' + video.id}
                   >
                     {/* <Translate contentKey="entity.action.play">Play</Translate> */}
-                    <FontAwesomeIcon icon={faYoutube} size="xl"></FontAwesomeIcon>
+                    <FontAwesomeIcon icon={faYoutube as IconProp} size="xl"></FontAwesomeIcon>
                   </Link>
                 </VideoAlert>
               </td>
