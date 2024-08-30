@@ -17,10 +17,10 @@ const VideoModal = (props: IVideoModalProps) => {
   const { handleClose } = props;
 
   let video2play;
-  if (props.type == 'normal') {
+  if (props.type === 'normal') {
     video2play = <Player poster="/content/images/player_poster.png" src={props.url} autoPlay />;
   }
-  if (props.type == 'youtube') {
+  if (props.type === 'youtube') {
     const opts = {
       height: '720',
       width: '100%',
