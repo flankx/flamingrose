@@ -14,6 +14,11 @@
       "follow": "在 Twitter 上联络 @jhipster"
     },
     "like": "如果您喜欢 JHipster, 请记得给我们加星在",
-    "github": "GitHub"
+    "github": "GitHub",
+    "git": {
+      "title": "最近提交",
+      "hash": "哈希",
+      "message": "信息"
+    }
   }
 }
