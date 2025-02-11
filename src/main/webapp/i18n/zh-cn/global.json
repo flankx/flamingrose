@@ -9,6 +9,7 @@
         "main": "数据",
         "player": "播放器",
         "youtube": "媒体中心",
+        "calculator": "计算器",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
