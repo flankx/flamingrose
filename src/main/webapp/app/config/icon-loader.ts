@@ -35,6 +35,11 @@ import {
   faVideo,
   faPlay,
   faXmark,
+  faTag,
+  faHashtag,
+  faCalendar,
+  faUserEdit,
+  faCalendarAlt,
 } from '@fortawesome/free-solid-svg-icons';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -77,5 +82,10 @@ export const loadIcons = () => {
     faVideo,
     faPlay,
     faXmark,
+    faTag,
+    faHashtag,
+    faCalendar,
+    faUserEdit,
+    faCalendarAlt,
   );
 };

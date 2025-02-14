@@ -1,21 +1,20 @@
 import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Button, Row, Badge, Col } from 'reactstrap';
+import { Button, Row, Col } from 'reactstrap';
 import { Translate, TextFormat } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { APP_DATETIME_FORMAT } from 'app/config/constants';
-import { languages } from 'app/config/translation';
 import { getVideo } from './video-management.reducer';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
-
 import VideoAlert from '../video-play/video-alert';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
+import './video-management-detail.scss';
+
 export const VideoManagementDetail = () => {
   const dispatch = useAppDispatch();
-
   const { id } = useParams<'id'>();
 
   useEffect(() => {
@@ -25,99 +24,80 @@ export const VideoManagementDetail = () => {
   const video = useAppSelector(state => state.videoManagement.video);
 
   return (
-    <div>
+    <div className="video-detail">
       <Row className="justify-content-center">
         <Col md="8">
-          <h1>
-            <Translate contentKey="videoManagement.detail.title">视频详情</Translate>
-          </h1>
-        </Col>
-      </Row>
-      <Row className="justify-content-center">
-        <Col md="8">
-          <dl className="jh-entity-details">
-            <dt>
-              <Translate contentKey="global.field.id">id</Translate>
-            </dt>
-            <dd>
-              <span>{video.id}</span>
-            </dd>
-            <dt>
-              <Translate contentKey="videoManagement.name">name</Translate>
-            </dt>
-            <dd>{video.name}</dd>
-            <dt>
-              <Translate contentKey="videoManagement.type">type</Translate>
-            </dt>
-            <dd>{video.type}</dd>
-            <dt>
-              <Translate contentKey="videoManagement.code">code</Translate>
-            </dt>
-            <dd>{video.code}</dd>
+          {/* 视频封面区域 */}
+          <div className="position-relative mb-4">{video.pic && <img src={video.pic} alt={video.name} className="cover-image" />}</div>
 
-            <dt>
-              <Translate contentKey="videoManagement.pic">缩略图</Translate>
-            </dt>
-            <dd>
-              {video.pic && (
-                <img
-                  src={video.pic}
-                  alt={video.name}
-                  className="video-thumbnail"
-                  style={{ maxWidth: '200px', maxHeight: '150px', objectFit: 'contain' }}
-                />
-              )}
-            </dd>
-            <dt>
-              <Translate contentKey="videoManagement.url">视频链接</Translate>
-            </dt>
-            <dd>
-              {video.url}
-              <VideoAlert id={video.id} url={video.url}>
-                <Link
-                  to="/entity/video-play"
-                  state={{ type: video.type, code: video.code, url: video.url }}
-                  className="alert-link ms-2"
-                  id={'tooltip-' + video.id}
-                >
-                  <FontAwesomeIcon icon={faYoutube as IconProp} size="xl" />
-                </Link>
-              </VideoAlert>
-            </dd>
-            <dt>
-              <Translate contentKey="videoManagement.desc">desc</Translate>
-            </dt>
-            <dd>{video.desc}</dd>
-            <dt>
-              <Translate contentKey="videoManagement.createdBy">Created By</Translate>
-            </dt>
-            <dd>{video.createdBy}</dd>
-            <dt>
-              <Translate contentKey="videoManagement.createdDate">Created Date</Translate>
-            </dt>
-            <dd>
-              {video.createdDate ? <TextFormat value={video.createdDate} type="date" format={APP_DATETIME_FORMAT} blankOnInvalid /> : null}
-            </dd>
-            <dt>
-              <Translate contentKey="videoManagement.lastModifiedBy">Last Modified By</Translate>
-            </dt>
-            <dd>{video.lastModifiedBy}</dd>
-            <dt>
-              <Translate contentKey="videoManagement.lastModifiedDate">Last Modified Date</Translate>
-            </dt>
-            <dd>
-              {video.lastModifiedDate ? (
-                <TextFormat value={video.lastModifiedDate} type="date" format={APP_DATETIME_FORMAT} blankOnInvalid />
-              ) : null}
-            </dd>
-          </dl>
+          {/* 视频信息区域 */}
+          <div className="info-box">
+            <div className="video-title d-flex justify-content-between align-items-center">
+              <h2 className="mb-0">{video.name}</h2>
+              <Link
+                to="/entity/video-play"
+                state={{ type: video.type, code: video.code, url: video.url }}
+                className="alert-link"
+                id={'tooltip-' + video.id}
+              >
+                <FontAwesomeIcon icon={faYoutube as IconProp} size="xl" className="me-2" style={{ color: '#ff0000' }} />
+              </Link>
+            </div>
 
-          <Button tag={Link} to="/entity/video-management" replace color="info">
-            <FontAwesomeIcon icon="arrow-left" />
-            <span className="d-none d-md-inline">
-              <Translate contentKey="entity.action.back">返回</Translate>
-            </span>
-          </Button>
+            <hr className="my-3" />
+
+            <div className="video-meta">
+              <Row>
+                <Col sm={6}>
+                  <p className="mb-2">
+                    <FontAwesomeIcon icon="tag" className="me-2" />
+                    类型: {video.type}
+                  </p>
+                  <p className="mb-2">
+                    <FontAwesomeIcon icon="hashtag" className="me-2" />
+                    编码: {video.code}
+                  </p>
+                  <p className="mb-2">
+                    <FontAwesomeIcon icon="user" className="me-2" />
+                    创建者: {video.createdBy}
+                  </p>
+                  <p className="mb-2">
+                    <FontAwesomeIcon icon="calendar" className="me-2" />
+                    创建时间:{' '}
+                    {video.createdDate && <TextFormat value={video.createdDate} type="date" format={APP_DATETIME_FORMAT} blankOnInvalid />}
+                  </p>
+                </Col>
+                <Col sm={6}>
+                  <p className="mb-2">
+                    <FontAwesomeIcon icon="user-edit" className="me-2" />
+                    修改者: {video.lastModifiedBy}
+                  </p>
+                  <p className="mb-2">
+                    <FontAwesomeIcon icon="calendar-alt" className="me-2" />
+                    修改时间:{' '}
+                    {video.lastModifiedDate && (
+                      <TextFormat value={video.lastModifiedDate} type="date" format={APP_DATETIME_FORMAT} blankOnInvalid />
+                    )}
+                  </p>
+                </Col>
+              </Row>
+            </div>
+
+            <hr className="my-3" />
+
+            <div className="video-desc">
+              <h5 className="mb-3">视频描述</h5>
+              <p>{video.desc}</p>
+            </div>
+          </div>
+
+          {/* 返回按钮 */}
+          <div className="mt-4">
+            <Button tag={Link} to="/entity/video-management" replace color="info">
+              <FontAwesomeIcon icon="arrow-left" />
+              <span className="d-none d-md-inline ms-1">返回</span>
+            </Button>
+          </div>
         </Col>
       </Row>
     </div>

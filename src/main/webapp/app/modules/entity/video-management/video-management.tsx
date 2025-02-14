@@ -165,17 +165,14 @@ export const VideoManagement = () => {
                 )}
               </td>
               <td>
-                <VideoAlert id={video.id} url={video.url}>
-                  <Link
-                    to="/entity/video-play"
-                    state={{ type: video.type, code: video.code, url: video.url }}
-                    className="alert-link"
-                    id={'tooltip-' + video.id}
-                  >
-                    {/* <Translate contentKey="entity.action.play">Play</Translate> */}
-                    <FontAwesomeIcon icon={faYoutube as IconProp} size="xl"></FontAwesomeIcon>
-                  </Link>
-                </VideoAlert>
+                <Link
+                  to="/entity/video-play"
+                  state={{ type: video.type, code: video.code, url: video.url }}
+                  className="alert-link"
+                  id={'tooltip-' + video.id}
+                >
+                  <FontAwesomeIcon icon={faYoutube as IconProp} size="xl" className="me-2" style={{ color: '#ff0000' }} />
+                </Link>
               </td>
               <td>{video.desc}</td>
               <td>
