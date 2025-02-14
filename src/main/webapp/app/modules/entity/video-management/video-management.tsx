@@ -154,7 +154,16 @@ export const VideoManagement = () => {
               <td>{video.type}</td>
               <td>{video.code}</td>
               <td />
-              <td>{video.pic}</td>
+              <td>
+                {video.pic && (
+                  <img
+                    src={video.pic}
+                    alt={video.name}
+                    className="video-thumbnail"
+                    style={{ maxWidth: '100px', maxHeight: '75px', objectFit: 'contain' }}
+                  />
+                )}
+              </td>
               <td>
                 <VideoAlert id={video.id} url={video.url}>
                   <Link
