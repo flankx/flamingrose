@@ -170,6 +170,7 @@ export const VideoManagement = () => {
                   state={{ type: video.type, code: video.code, url: video.url }}
                   className="alert-link"
                   id={'tooltip-' + video.id}
+                  title={video.url}
                 >
                   <FontAwesomeIcon icon={faYoutube as IconProp} size="xl" className="me-2" style={{ color: '#ff0000' }} />
                 </Link>
