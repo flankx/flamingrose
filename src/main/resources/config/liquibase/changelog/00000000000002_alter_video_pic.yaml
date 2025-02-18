@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20240101000001
+      author: FlankX
+      changes:
+        - modifyDataType:
+            columnName: pic
+            newDataType: TEXT
+            tableName: jhi_video

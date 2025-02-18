@@ -5,10 +5,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-
 import java.io.Serializable;
 
 @Entity
@@ -38,8 +38,8 @@ public class Video extends AbstractAuditingEntity<Long> implements Serializable 
     @Column(name = "type", length = 16, unique = true, nullable = false)
     private String type;
 
-    @Size(max = 255)
-    @Column(name = "pic", length = 255)
+    @Lob // 添加@Lob注解支持大文本
+    @Column(name = "pic", columnDefinition = "TEXT") // 修改列定义为TEXT类型
     private String pic;
 
     @Size(max = 255)
@@ -108,14 +108,29 @@ public class Video extends AbstractAuditingEntity<Long> implements Serializable 
 
     @Override
     public String toString() {
-        return "Video{" +
-            "id=" + id +
-            ", name='" + name + '\'' +
-            ", type='" + type + '\'' +
-            ", code='" + code + '\'' +
-            ", pic='" + pic + '\'' +
-            ", url='" + url + '\'' +
-            ", desc='" + desc + '\'' +
-            '}';
+        return (
+            "Video{" +
+            "id=" +
+            id +
+            ", name='" +
+            name +
+            '\'' +
+            ", type='" +
+            type +
+            '\'' +
+            ", code='" +
+            code +
+            '\'' +
+            ", pic='" +
+            pic +
+            '\'' +
+            ", url='" +
+            url +
+            '\'' +
+            ", desc='" +
+            desc +
+            '\'' +
+            '}'
+        );
     }
 }

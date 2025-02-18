@@ -10,8 +10,16 @@ import { useAppDispatch, useAppSelector } from 'app/config/store';
 
 export const VideoManagementUpdate = () => {
   const dispatch = useAppDispatch();
-
   const navigate = useNavigate();
+
+  const [previewUrl, setPreviewUrl] = useState('');
+  const isInvalid = false;
+  const video = useAppSelector(state => state.videoManagement.video);
+  const [picValue, setPicValue] = useState(video?.pic || ''); // 添加状态
+
+  const loading = useAppSelector(state => state.videoManagement.loading);
+  const updating = useAppSelector(state => state.videoManagement.updating);
+  const authorities = useAppSelector(state => state.videoManagement.authorities);
 
   const { id } = useParams<'id'>();
   const isNew = id === undefined;
@@ -33,19 +41,47 @@ export const VideoManagementUpdate = () => {
   };
 
   const saveVideo = values => {
+    const updatedValues = {
+      ...values,
+      pic: picValue, // 确保使用最新的pic值
+    };
+
     if (isNew) {
-      dispatch(createVideo(values));
+      dispatch(createVideo(updatedValues));
     } else {
-      dispatch(updateVideo(values));
+      dispatch(updateVideo(updatedValues));
     }
     handleClose();
   };
 
-  const isInvalid = false;
-  const video = useAppSelector(state => state.videoManagement.video);
-  const loading = useAppSelector(state => state.videoManagement.loading);
-  const updating = useAppSelector(state => state.videoManagement.updating);
-  const authorities = useAppSelector(state => state.videoManagement.authorities);
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      // 检查文件大小（2MB限制）
+      if (file.size > 2 * 1024 * 1024) {
+        alert('图片大小不能超过2MB');
+        return;
+      }
+
+      const objectUrl = URL.createObjectURL(file);
+      setPreviewUrl(objectUrl);
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result as string;
+        setPicValue(base64String); // 更新状态
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      if (previewUrl) {
+        URL.revokeObjectURL(previewUrl);
+      }
+    };
+  }, [previewUrl]);
 
   return (
     <div>
@@ -113,17 +149,6 @@ export const VideoManagementUpdate = () => {
                   },
                 }}
               />
-              <ValidatedField
-                type="text"
-                name="pic"
-                label={translate('videoManagement.pic')}
-                validate={{
-                  maxLength: {
-                    value: 255,
-                    message: translate('entity.validation.maxlength', { max: 255 }),
-                  },
-                }}
-              />
               <FormText>This field cannot be longer than 255 characters.</FormText>
               <ValidatedField
                 type="text"
@@ -146,6 +171,23 @@ export const VideoManagementUpdate = () => {
                     message: translate('entity.validation.maxlength', { max: 255 }),
                   },
                 }}
+              />
+              {(previewUrl || video.pic) && (
+                <div className="mb-3">
+                  <img src={previewUrl || video.pic} alt="预览图" style={{ maxWidth: '200px', marginBottom: '10px' }} />
+                </div>
+              )}
+              <div className="mb-3">
+                <label className="form-label">
+                  <Translate contentKey="videoManagement.pic">上传图片</Translate>
+                </label>
+                <input type="file" className="form-control" accept="image/*" onChange={handleImageUpload} />
+                <FormText>支持 jpg、png 等常见图片格式,大小不超过 2MB</FormText>
+              </div>
+              <ValidatedField
+                type="hidden"
+                name="pic"
+                defaultValue={picValue} // 使用 defaultValue 而不是 value
               />
               <Button tag={Link} to="/entity/video-management" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
