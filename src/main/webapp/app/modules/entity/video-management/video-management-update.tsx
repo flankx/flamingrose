@@ -181,7 +181,14 @@ export const VideoManagementUpdate = () => {
                 <label className="form-label">
                   <Translate contentKey="videoManagement.pic">上传图片</Translate>
                 </label>
-                <input type="file" className="form-control" accept="image/*" onChange={handleImageUpload} />
+                <input
+                  type="file"
+                  className="form-control"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  title="Upload image file"
+                  placeholder="Choose an image file"
+                />
                 <FormText>支持 jpg、png 等常见图片格式,大小不超过 2MB</FormText>
               </div>
               <ValidatedField
