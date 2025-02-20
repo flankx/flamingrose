@@ -3,11 +3,9 @@ import { Link, useParams } from 'react-router-dom';
 import { Button, Row, Col } from 'reactstrap';
 import { Translate, TextFormat } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import { APP_DATETIME_FORMAT } from 'app/config/constants';
 import { getVideo } from './video-management.reducer';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
-import VideoAlert from '../video-play/video-alert';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
@@ -25,79 +23,76 @@ export const VideoManagementDetail = () => {
 
   return (
     <div className="video-detail">
-      <Row className="justify-content-center">
-        <Col md="8">
-          {/* 视频封面区域 */}
-          <div className="position-relative mb-4">{video.pic && <img src={video.pic} alt={video.name} className="cover-image" />}</div>
+      <Row className="g-4">
+        {' '}
+        {/* 增加栅格间距 */}
+        <Col md={4}>
+          <div className="position-relative mb-4">
+            {' '}
+            {/* 增加底部间距 */}
+            {video.pic && <img src={video.pic} alt={video.name} className="img-fluid" />}
+          </div>
 
-          {/* 视频信息区域 */}
-          <div className="info-box">
-            <div className="video-title d-flex justify-content-between align-items-center">
-              <h2 className="mb-0">{video.name}</h2>
-              <Link
-                to="/entity/video-play"
-                state={{ type: video.type, code: video.code, url: video.url }}
-                className="alert-link"
-                id={'tooltip-' + video.id}
-                title={video.url}
-              >
-                <FontAwesomeIcon icon={faYoutube as IconProp} size="xl" className="me-2" style={{ color: '#ff0000' }} />
-              </Link>
-            </div>
-
-            <hr className="my-3" />
-
-            <div className="video-meta">
-              <Row>
-                <Col sm={6}>
-                  <p className="mb-2">
-                    <FontAwesomeIcon icon="tag" className="me-2" />
-                    类型: {video.type}
-                  </p>
-                  <p className="mb-2">
-                    <FontAwesomeIcon icon="hashtag" className="me-2" />
-                    编码: {video.code}
-                  </p>
-                  <p className="mb-2">
-                    <FontAwesomeIcon icon="user" className="me-2" />
-                    创建者: {video.createdBy}
-                  </p>
-                  <p className="mb-2">
-                    <FontAwesomeIcon icon="calendar" className="me-2" />
-                    创建时间:{' '}
+          <div className="text-center">
+            <Link to="/entity/video-play" state={{ type: video.type, code: video.code, url: video.url }} className="btn btn-primary">
+              <FontAwesomeIcon icon={faYoutube as IconProp} size="xl" className="me-2" style={{ color: '#ff0000' }} />
+              播放视频
+            </Link>
+          </div>
+        </Col>
+        <Col md={8}>
+          <div className="info-box p-4">
+            {' '}
+            {/* 增加内边距 */}
+            <h2 className="mb-4">{video.name}</h2>
+            <Row className="mb-4">
+              <Col sm={6}>
+                <p className="mb-2">
+                  <FontAwesomeIcon icon="tag" className="me-2 text-secondary" />
+                  类型: <span className="fw-bold">{video.type}</span>
+                </p>
+                <p className="mb-2">
+                  <FontAwesomeIcon icon="hashtag" className="me-2 text-secondary" />
+                  编码: <span className="fw-bold">{video.code}</span>
+                </p>
+                <p className="mb-2">
+                  <FontAwesomeIcon icon="user" className="me-2 text-secondary" />
+                  创建者: <span className="fw-bold">{video.createdBy}</span>
+                </p>
+                <p className="mb-2">
+                  <FontAwesomeIcon icon="calendar" className="me-2 text-secondary" />
+                  创建时间:{' '}
+                  <span className="fw-bold">
                     {video.createdDate && <TextFormat value={video.createdDate} type="date" format={APP_DATETIME_FORMAT} blankOnInvalid />}
-                  </p>
-                </Col>
-                <Col sm={6}>
-                  <p className="mb-2">
-                    <FontAwesomeIcon icon="user-edit" className="me-2" />
-                    修改者: {video.lastModifiedBy}
-                  </p>
-                  <p className="mb-2">
-                    <FontAwesomeIcon icon="calendar-alt" className="me-2" />
-                    修改时间:{' '}
+                  </span>
+                </p>
+              </Col>
+              <Col sm={6}>
+                <p className="mb-2">
+                  <FontAwesomeIcon icon="user-edit" className="me-2 text-secondary" />
+                  修改者: <span className="fw-bold">{video.lastModifiedBy}</span>
+                </p>
+                <p className="mb-2">
+                  <FontAwesomeIcon icon="calendar-alt" className="me-2 text-secondary" />
+                  修改时间:{' '}
+                  <span className="fw-bold">
                     {video.lastModifiedDate && (
                       <TextFormat value={video.lastModifiedDate} type="date" format={APP_DATETIME_FORMAT} blankOnInvalid />
                     )}
-                  </p>
-                </Col>
-              </Row>
-            </div>
-
-            <hr className="my-3" />
-
-            <div className="video-desc">
+                  </span>
+                </p>
+              </Col>
+            </Row>
+            <div className="video-desc bg-white p-3 rounded">
               <h5 className="mb-3">视频描述</h5>
-              <p>{video.desc}</p>
+              <p className="text-muted">{video.desc || '暂无描述'}</p>
             </div>
-          </div>
-
-          {/* 返回按钮 */}
-          <div className="mt-4">
-            <Button tag={Link} to="/entity/video-management" replace color="info">
-              <FontAwesomeIcon icon="arrow-left" />
-              <span className="d-none d-md-inline ms-1">返回</span>
-            </Button>
+            <div className="mt-4">
+              <Button tag={Link} to="/entity/video-management" replace color="info">
+                <FontAwesomeIcon icon="arrow-left" />
+                <span className="ms-1">返回列表</span>
+              </Button>
+            </div>
           </div>
         </Col>
       </Row>
