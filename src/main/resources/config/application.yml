@@ -219,3 +219,9 @@ jhipster:
 # ===================================================================
 
 # application:
+
+azure:
+  translator:
+    key: ${APIKEY:} # 替换为你的Azure密钥
+    endpoint: https://api.cognitive.microsofttranslator.com
+    region: ${REGIN:} # 如: eastus

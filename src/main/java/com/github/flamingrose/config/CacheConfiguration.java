@@ -16,7 +16,6 @@ import org.springframework.boot.info.BuildProperties;
 import org.springframework.boot.info.GitProperties;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.interceptor.KeyGenerator;
-import org.springframework.context.annotation.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import tech.jhipster.config.JHipsterProperties;
@@ -36,7 +35,8 @@ public class CacheConfiguration {
         URI redisUri = URI.create(jHipsterProperties.getCache().getRedis().getServer()[0]);
 
         Config config = new Config();
-        // Fix Hibernate lazy initialization https://github.com/jhipster/generator-jhipster/issues/22889
+        // Fix Hibernate lazy initialization
+        // https://github.com/jhipster/generator-jhipster/issues/22889
         config.setCodec(new org.redisson.codec.SerializationCodec());
         if (jHipsterProperties.getCache().getRedis().isCluster()) {
             ClusterServersConfig clusterServersConfig = config

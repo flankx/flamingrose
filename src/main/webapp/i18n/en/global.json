@@ -10,6 +10,7 @@
         "player": "H5 Player",
         "youtube": "Media Center",
         "calculator": "Calculator",
+        "translator": "Translator",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -2,7 +2,7 @@
 name: flamingrose
 services:
   mysql:
-    image: mysql:8.3.0
+    image: mysql:8.0.36
     volumes:
       - ./config/mysql:/etc/mysql/conf.d
     #   - ~/volumes/jhipster/flamingrose/mysql/:/var/lib/mysql/
